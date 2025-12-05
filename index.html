@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Rafael de Onoto - Portuguesa</title>
+    
+    <!-- Enlaces a fuentes y librerías de iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ========================================= -->
+    <!--            AQUÍ COMIENZA EL CSS           -->
+    <!-- ========================================= -->
+    <style>
+        /* --- Variables de Colores --- */
+        :root {
+            --primary-color: #064e3b; /* Verde Esmeralda Oscuro */
+            --secondary-color: #f59e0b; /* Amarillo/Dorado */
+            --text-color: #374151;
+            --light-bg: #f9fafb;
+            --white: #ffffff;
+        }
+
+        /* --- Estilos Generales --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Barra de Navegación --- */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section (Encabezado) --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('img/represa.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d97706;
+            transform: translateY(-3px);
+        }
+
+        /* --- Secciones Comunes --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Historia --- */
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .history-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .history-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .history-img img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- Cultura (Cards) --- */
+        .culture-bg {
+            background-color: #ecfdf5; /* Fondo verde muy claro */
+            max-width: 100%; /* Ocupa todo el ancho */
+        }
+        
+        .culture-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* --- Turismo --- */
+        .tourism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .place-card {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .place-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .place-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .place-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--white);
+        }
+
+        .place-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 3rem 1rem;
+            text-align: center;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .footer-content h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #374151;
+            font-family: monospace;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* --- Responsividad (Móvil) --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Ocultar menú en móvil por simplicidad */
+            }
+            .menu-icon {
+                display: block; /* Mostrar icono hamburguesa */
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+            .tourism-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-leaf" style="color: var(--secondary-color);"></i>
+                San Rafael de Onoto
+            </div>
+            <ul class="nav-links">
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#cultura">Cultura</a></li>
+                <li><a href="#turismo">Turismo</a></li>
+            </ul>
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- Encabezado (Hero) -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Bienvenidos a San Rafael</h1>
+            <p>Tierra de fe, agricultura y corazón llanero en el estado Portuguesa.</p>
+            <a href="#historia" class="btn">Descubrir Más</a>
+        </div>
+    </header>
+
+    <!-- Sección: Historia -->
+    <section id="historia">
+        <h2 class="section-title">Reseña Histórica</h2>
+        <div class="history-grid">
+            <div class="history-text">
+                <p>San Rafael de Onoto es un municipio ubicado en la zona norte del estado Portuguesa, Venezuela. Su historia está profundamente ligada al desarrollo agrícola de la nación, sirviendo como un punto estratégico entre los llanos y el centro del país.</p>
+                <p>Fundado bajo la protección de <strong>San Rafael Arcángel</strong>, el pueblo creció gracias a la fertilidad de sus tierras. Un hito crucial fue la construcción del <strong>Embalse Las Majaguas</strong>, que transformó la economía local, permitiendo el riego de miles de hectáreas y convirtiendo a la región en una potencia productora de alimentos.</p>
+                <p>La historia de San Rafael de Onoto se remonta a su fundación el 9 de mayo de 1726 por los frailes Bartolomé de San Miguel y Salvador de Cádiz, y el fraile portugués Antonio Muñoz Rojas, con el objetivo de evangelizar a los indígenas de las naciones Otomacos, Amaibos, Guaranaos y Guamos. La fundación se realizó en la jurisdicción de San Carlos de Austria (hoy San Carlos, Cojedes), cumpliendo con el encargo de Juan de Cevallos. Con el tiempo, el pueblo creció, pasando de 295 personas en 1758 a 126 familias en 107 casas para 1778.  
+</p>
+            </div>
+            <div class="history-img">
+                <img src="img/agricolas.jpg" alt="Agricultura en Portuguesa"
+                alt="Agricultura">
+                 <div class="place-info">
+
+                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Cultura -->
+    <div class="culture-bg">
+        <section id="cultura" class="culture-container">
+            <h2 class="section-title">Nuestra Cultura</h2>
+            <div class="cards-grid">
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-guitar"></i></div>
+                    <h3>Música Llanera</h3>
+                    <p>El arpa, cuatro y maracas son el alma de nuestras fiestas. El joropo se baila con orgullo en cada rincón del municipio.</p>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-church"></i></div>
+                    <h3>Fiestas Patronales</h3>
+                    <p>Cada 24 de octubre celebramos a nuestro patrón San Rafael Arcángel con misas, procesiones y ferias populares.</p>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Gastronomía</h3>
+                    <p>La carne en vara, el queso llanero fresco y las cachapas son el sabor inconfundible de nuestra tierra.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sección: Turismo -->
+    <section id="turismo">
+        <h2 class="section-title">Sitios Turísticos</h2>
+        <div class="tourism-grid">
+            <!-- Sitio 1 -->
+            <div class="place-card">
+                <img src="img/represa.jpg" 
+                     
+                     alt="Embalse Las Majaguas">
+                <div class="place-info">
+                    <h3>Embalse Las Majaguas</h3>
+                    <p>Pesca deportiva, canotaje y atardeceres llaneros inolvidables.</p>
+                </div>
+            </div>
+            <!-- Sitio 2 -->
+            <div class="place-card">
+                <img src="img/portada 2.jpg" alt="Iglesia">
+                <div class="place-info">
+                    <h3>Iglesia San Rafael Arcángel</h3>
+                    <p>El centro espiritual y arquitectónico frente a la Plaza Bolívar.</p>
+                </div>
+            </div>
+            <!-- Sitio 3 -->
+            <div class="place-card">
+                <img src="img/manga  de ccoleo.jpg" alt="Manga de Coleo">
+                <div class="place-info">
+                    <h3>Manga de Coleo</h3>
+                    <p>Vive la emoción del deporte llanero por excelencia.</p>
+                </div>
+            </div>
+            <!-- Sitio 4 -->
+            <div class="place-card">
+                <img src="img/estadio guaca muñoz.jpg" alt="Estadio Guaca Muñoz">
+                <div class="place-info">
+                    <h3>Estadio Guaca Muñoz</h3>
+                    <p>Disfruta del béisbol y eventos deportivos en un ambiente familiar.</p>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Comercio -->
+     <section id="comercio">
+        <h2 class="section-title">Comercio Local</h2>
+        <div class="cards-grid">
+            
+            <!-- Tarjeta 1 -->
+           
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h4>San Rafael de Onoto</h4>
+            <p>Estado Portuguesa, Venezuela</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025: Programador Roger castillo. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
